@@ -1,5 +1,5 @@
 /* CONFIG: paste image URLs here later */
-const CONFIG = { avatar: "", project1: "assets/desktop.jpeg", project2: "assets/mobile.jpg" };
+const CONFIG = { avatar: "", project1: "assets/desktop.png", project2: "assets/mobile.jpg" };
 
 const $ = id => document.getElementById(id);
 const clamp = v => Math.min(1, Math.max(0, v));
