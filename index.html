@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kashaf Ul Khair Khalid — AI-Era Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="cursor-glow" aria-hidden="true"></div>
+<canvas id="gl"></canvas>
+<div class="noise"></div>
+<div class="progress"><i id="bar"></i></div>
+
+<div id="track">
+  <div id="stage">
+
+    <section id="intro" aria-label="Introduction">
+      <div class="sys rv r1"><span class="dot"></span><span class="mono">AI-era portfolio · online</span></div>
+      <h1 class="grad rv r2">Kashaf Ul Khair Khalid</h1>
+      <p class="typed rv r3"><span id="typed"></span><span class="caret"></span></p>
+      <p class="sub rv r4">Software engineering student in Lahore building fast, expressive interfaces and learning the AI systems that will shape how they're made.</p>
+      <div class="scroll mono">↓ scroll to enter the system</div>
+    </section>
+
+    <div id="desk" class="showcase" aria-label="Web project showcase">
+      <div class="laptop" id="laptop">
+        <div class="lid"><div class="screen" id="s1">
+          <div class="bento">
+            <div class="tile hero"><span class="mono" style="color:var(--glow)">Project 01</span><div><h5>Portfolio<br>Web Experience</h5></div></div>
+            <div class="tile"><span class="mono">Stack</span><div class="big">React</div></div>
+            <div class="tile"><span class="mono">Status</span><code>● shipped</code></div>
+            <div class="tile" style="grid-column:span 2"><code>const ui = ai.design(&#10;  "premium motion"&#10;);</code></div>
+            <div class="tile"><span class="mono">Score</span><div class="big">98</div></div>
+          </div>
+        </div></div>
+        <div class="base"></div>
+      </div>
+      <p class="caption mono" id="cap1">01 — Web Project</p>
+    </div>
+
+    <div id="phone" class="showcase" aria-label="Mobile project showcase">
+      <div class="phone" id="phoneEl"><div class="screen-m" id="s2">
+        <div class="mb">
+          <div class="tile hero"><span class="mono" style="color:var(--glow)">Project 02</span><div><h5>Mobile<br>Experience</h5></div></div>
+          <div class="tile"><code>&gt; render()&#10;  ✓ 60fps</code></div>
+          <div class="tile"><div class="big">AI</div><span class="mono">powered</span></div>
+        </div>
+      </div></div>
+      <p class="caption mono" id="cap2">02 — Mobile Project</p>
+    </div>
+
+    <section id="contact">
+      <div>
+        <span class="mono">// get in touch</span>
+        <h2 style="margin-top:14px">Let's build the next thing.</h2>
+        <div class="info">
+          <div><span class="mono">Name</span>Kashaf Ul Khair Khalid</div>
+          <div><span class="mono">Email</span><a href="mailto:kashafulkhairkhalid@gmail.com">kashafulkhairkhalid@gmail.com</a></div>
+          <div><span class="mono">Phone</span><a href="tel:+923214110620">+92 321 4110620</a></div>
+        </div>
+        <div class="chips">
+          <a class="chip" href="https://github.com/kashaf-ul-khair1" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="chip" href="https://www.linkedin.com/in/kashaf-ul-khair-khalid-88a06838b/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="chip" href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=4xmnugg" target="_blank" rel="noopener">Instagram ↗</a>
+          <a class="chip" href="https://www.facebook.com/share/14ymUVndyHF/" target="_blank" rel="noopener">Facebook ↗</a>
+        </div>
+      </div>
+      <form id="form" class="glass">
+        <div class="row">
+          <label><span class="mono">Name</span><input type="text" placeholder="Your name" required></label>
+          <label><span class="mono">Email</span><input type="email" placeholder="you@email.com" required></label>
+        </div>
+        <label><span class="mono">Subject</span><input type="text" placeholder="What are we building?" required></label>
+        <label><span class="mono">Message</span><textarea placeholder="Tell me about it..." required></textarea></label>
+        <button type="submit" id="send">Send message →</button>
+      </form>
+    </section>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
