@@ -1,5 +1,5 @@
 /* CONFIG: paste image URLs here later */
-const CONFIG = { avatar: "", project1: "assets/desktop.jpeg", project2: "assets/mobile.png" };
+const CONFIG = { avatar: "", project1: "assets/desktop.jpeg", project2: "assets/mobile.jpg" };
 
 const $ = id => document.getElementById(id);
 const clamp = v => Math.min(1, Math.max(0, v));
@@ -8,7 +8,7 @@ const lerp = (a, b, t) => a + (b - a) * t;
 const R = (p, a, b) => ease(clamp((p - a) / (b - a)));
 const track = $('track'), intro = $('intro'), desk = $('desk'), laptop = $('laptop'), cap1 = $('cap1');
 const phone = $('phone'), phoneEl = $('phoneEl'), cap2 = $('cap2'), contact = $('contact'), bar = $('bar');
-let MX = .5, MY = .5, baseD = 1, baseP = 1, coverD = 1, coverP = 1;
+let MX = .5, MY = .5, baseD = 1, baseP = 1, coverD = 1, coverP = 1, SPIN = true;
 
 function progress() { const max = track.offsetHeight - innerHeight; return max > 0 ? clamp(scrollY / max) : 0; }
 function sizes() {
@@ -20,9 +20,18 @@ function sizes() {
   const mobileW = phoneEl.querySelector('.screen-m')?.offsetWidth || 234;
   const mobileH = phoneEl.querySelector('.screen-m')?.offsetHeight || 514;
   baseD = Math.min(1, innerWidth * .9 / laptopW);
-  baseP = Math.min(1, innerHeight * .7 / phoneH);
-  coverD = Math.max(innerWidth / screenW, innerHeight / screenH);
-  coverP = Math.max(innerWidth / mobileW, innerHeight / mobileH);
+  // Phones: the mockup turns sideways and is sized so it fits fully on screen.
+  // Desktop keeps the original sizing.
+  SPIN = innerWidth > 820;
+  coverD = Math.min(innerWidth / screenW, innerHeight / screenH);
+  if (SPIN) {
+    baseP = Math.min(1, innerHeight * .7 / phoneH);
+    coverP = Math.max(innerWidth / mobileW, innerHeight / mobileH);
+  } else {
+    // turned sideways, the phone's height runs across the screen width and its width runs across the height
+    baseP = Math.min(1, innerHeight * .7 / phoneH, innerWidth * .85 / phoneH, innerHeight * .85 / phoneW);
+    coverP = Math.min(innerWidth * .92 / mobileW, innerHeight * .92 / mobileH);
+  }
 }
 
 /* ---------- WebGL shader background: living maroon-rose noise field ---------- */
@@ -68,7 +77,8 @@ let SCROLL = 0;
   const U = n => gl.getUniformLocation(pr, n);
   const uRes = U('uRes'), uT = U('uT'), uM = U('uM'), uP = U('uP');
   function resize() {
-    const s = Math.min(devicePixelRatio, 1.5) * .7;   // render scale for smooth performance
+    const small = innerWidth < 820 || matchMedia('(pointer:coarse)').matches;
+    const s = small ? .4 : Math.min(devicePixelRatio, 1.5) * .7;   // lower render scale on phones/tablets
     cv.width = innerWidth * s; cv.height = innerHeight * s;
     gl.viewport(0, 0, cv.width, cv.height);
     gl.uniform2f(uRes, cv.width, cv.height);
@@ -80,7 +90,7 @@ let SCROLL = 0;
     gl.uniform2f(uM, MX, 1 - MY);
     gl.uniform1f(uP, SCROLL);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
-    requestAnimationFrame(draw);
+    if (!document.hidden) requestAnimationFrame(draw); else setTimeout(() => requestAnimationFrame(draw), 250);
   })();
 })();
 
@@ -126,6 +136,7 @@ function frame() {
 
   const cIn = R(p, .86, .95);
   contact.style.opacity = cIn;
+  contact.style.pointerEvents = cIn > .5 ? "auto" : "none";
   contact.style.transform = `translateY(${(1 - cIn) * 60}px)`;
 
   bar.style.transform = `scaleX(${p})`;
@@ -150,9 +161,9 @@ addEventListener('pointermove', e => {
 },{passive:true});
 
 /* Your images */
-if (CONFIG.avatar && $('avatar')) $('avatar').innerHTML = `<img src="${CONFIG.avatar}" alt="">`;
-if (CONFIG.project1) $('s1').innerHTML = `<img src="${CONFIG.project1}" alt="">`;
-if (CONFIG.project2) $('s2').innerHTML = `<img src="${CONFIG.project2}" alt="">`;
+if (CONFIG.avatar && $('avatar')) $('avatar').innerHTML = `<img src="${CONFIG.avatar}" alt="Kashaf Ul Khair Khalid">`;
+if (CONFIG.project1) $('s1').innerHTML = `<img src="${CONFIG.project1}" alt="Desktop project screenshot">`;
+if (CONFIG.project2) $('s2').innerHTML = `<img src="${CONFIG.project2}" alt="Mobile project screenshot">`;
 
 $('form').addEventListener('submit', e => {
   e.preventDefault();
