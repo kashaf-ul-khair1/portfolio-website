@@ -21,8 +21,8 @@ function sizes() {
   const mobileH = phoneEl.querySelector('.screen-m')?.offsetHeight || 514;
   baseD = Math.min(1, innerWidth * .9 / laptopW);
   baseP = Math.min(1, innerHeight * .7 / phoneH);
-  coverD = Math.max(innerWidth / screenW, innerHeight / screenH);
-  coverP = Math.max(innerWidth / mobileW, innerHeight / mobileH);
+  coverD = Math.min(innerWidth / screenW, innerHeight / screenH);
+  coverP = Math.min(innerWidth / mobileW, innerHeight / mobileH);
 }
 
 /* ---------- WebGL shader background: living maroon-rose noise field ---------- */
@@ -150,9 +150,9 @@ addEventListener('pointermove', e => {
 },{passive:true});
 
 /* Your images */
-if (CONFIG.avatar && $('avatar')) $('avatar').innerHTML = `<img src="${CONFIG.avatar}" alt="">`;
-if (CONFIG.project1) $('s1').innerHTML = `<img src="${CONFIG.project1}" alt="">`;
-if (CONFIG.project2) $('s2').innerHTML = `<img src="${CONFIG.project2}" alt="">`;
+if (CONFIG.avatar && $('avatar')) $('avatar').innerHTML = `<img src="${CONFIG.avatar}" alt="Kashaf Ul Khair Khalid">`;
+if (CONFIG.project1) $('s1').innerHTML = `<img src="${CONFIG.project1}" alt="Desktop project screenshot">`;
+if (CONFIG.project2) $('s2').innerHTML = `<img src="${CONFIG.project2}" alt="Mobile project screenshot">`;
 
 $('form').addEventListener('submit', e => {
   e.preventDefault();

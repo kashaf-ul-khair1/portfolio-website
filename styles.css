@@ -39,7 +39,7 @@ h1{margin-top:26px;font:900 clamp(40px,8.2vw,124px)/.95 'Unbounded',sans-serif;l
 .lid{background:linear-gradient(180deg,#1a1620,#0a080d);padding:14px;border-radius:20px 20px 6px 6px;border:1px solid var(--line);box-shadow:0 60px 120px rgba(90,12,34,.5),0 0 80px rgba(255,79,126,.15)}
 .screen{width:560px;height:350px;border-radius:6px;overflow:hidden;background:#0c0910;position:relative}
 .screen img,.screen-m img{width:100%;height:100%;object-fit:cover;display:block}
-.screen img{object-fit:contain}
+.screen img,.screen-m img{object-fit:contain;background:#0c0910}
 .base{width:660px;height:12px;margin:0 auto;background:linear-gradient(180deg,#2a2530,#100d14);border-radius:0 0 18px 18px}
 .phone{width:262px;height:542px;background:linear-gradient(145deg,#1d1924,#0a080d);border-radius:42px;padding:14px;border:1px solid var(--line);box-shadow:0 60px 120px rgba(90,12,34,.55),0 0 70px rgba(255,79,126,.18);will-change:transform}
 .screen-m{width:234px;height:514px;border-radius:30px;overflow:hidden;background:#0c0910;position:relative}
@@ -135,11 +135,11 @@ button:hover:after{transform:translateX(120%)}
   .screen-m{width:100%;height:auto;aspect-ratio:234/514;border-radius:20px}
   .mb{inset:8px;gap:6px}.mb .tile{padding:8px}
   .caption{margin-top:18px;font-size:10px}
-  #contact{grid-template-columns:1fr;padding:80px 7vw 34px;align-content:start;gap:28px;overflow-y:auto}
+  #contact{grid-template-columns:1fr;padding:72px 7vw 24px;align-content:start;gap:20px;overflow-y:auto;overscroll-behavior:contain}
   #contact h2{font-size:clamp(36px,11vw,64px)}
-  .info{margin-top:24px;gap:14px}.chips{margin-top:22px}
-  form{padding:20px;border-radius:20px;gap:12px}.row{grid-template-columns:1fr;gap:12px}
-  input,textarea{padding:13px 14px;font-size:13px}textarea{min-height:100px}
+  .info{margin-top:16px;gap:10px}.chips{margin-top:16px;gap:8px}
+  form{padding:16px;border-radius:20px;gap:10px}.row{grid-template-columns:1fr;gap:10px}
+  input,textarea{padding:12px 14px;font-size:16px}textarea{min-height:84px}
   button{width:100%;justify-self:stretch}
 }
 @media (max-width:480px){
